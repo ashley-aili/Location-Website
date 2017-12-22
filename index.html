@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+    <style> 
+    body {padding: 0; margin: 0;} 
+    canvas {vertical-align: top;} 
+    p {text-align: center;}
+    button {display: block; margin: auto;}
+    </style>
+  </head>
+  <body>
+
+<p>Where Are You?</p>
+
+<button onclick="getLocation()">Location</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    " Longitude: " + position.coords.longitude;
+		if (position.coords.latitude > 0){
+			console.log('WORK');
+			// img = loadImage("north.jpg");
+			// x.innerHTML = image(img,0,0);
+			x.innerHTML = "<img src="north.jpg">"
+		} else {
+			// img2 = loadImage("south.jpg");
+			// x.innerHTML = image(img2,0,0);
+			x.innerHTML = "<img src="north.jpg">"
+
+		}
+	
+}
+</script>
+
+</body>
+</html>
